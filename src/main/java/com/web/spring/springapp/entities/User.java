@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Table(name = "users")
+@AllArgsConstructor
 public class User extends BaseEntity {
 
     private String name;
@@ -22,19 +23,6 @@ public class User extends BaseEntity {
     private String username;
     private String password;
     private String email;
-
-
-    public User( String name, String surname, String cardNo, String username, String password, String email, LocalDateTime createdAt, String createdBy) {
-        super(createdAt, createdBy);
-        this.name = name;
-        this.surname = surname;
-        this.cardNo = cardNo;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
-
-
 
 
 }

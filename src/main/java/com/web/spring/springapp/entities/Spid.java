@@ -17,12 +17,14 @@ public class Spid extends BaseEntity {
 
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User userID;
     private String createdBy;
     @Enumerated(EnumType.STRING)
     private  SpidStatus spidStatus;
     @Enumerated(EnumType.STRING)
     private Type type;
+
 
 
 }

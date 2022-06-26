@@ -5,20 +5,25 @@ import com.web.spring.springapp.entities.Spid;
 import com.web.spring.springapp.entities.User;
 import com.web.spring.springapp.repository.SpidRepository;
 import com.web.spring.springapp.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class MainService {
-    @Autowired
+
     UserRepository  userRepository;
-    @Autowired
     SpidRepository spidRepository;
 
+    MainService(SpidRepository spidRepository,UserRepository userRepository){
+        this.userRepository=userRepository;
+        this.spidRepository=spidRepository;
+    }
 
-    public User createUser(User user){
+
+    public User createUser(User user) throws Exception {
+        Optional<User>  findIfPersonExists = userRepository.findByName(user.getName());
         return userRepository.save(user);
     }
 
@@ -59,4 +64,15 @@ public class MainService {
     }
 
 
+    public Object changeSpidStatus(Long id) {
+        return null;
+    }
+
+    public Object retrieveAllSpids() {
+        return null;
+    }
+
+    public List<Spid> SearchSpid(String createdBy){
+        return spidRepository.searchSpid("xkasaj");
+    };
 }
